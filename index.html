@@ -110,6 +110,57 @@
     .card * {
       color: var(--text) !important;
     }
+
+    /* Fake widget card */
+    .widgetCard{
+      margin-top:14px;
+      padding:16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(124,92,255,.14);
+      box-shadow: 0 10px 25px rgba(20,10,60,.08);
+    }
+    .widgetTitle{
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .widgetBtn{
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(124,92,255,.10);
+      font-weight: 900;
+    }
+    .widgetList{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:12px;
+    }
+    .widgetItem{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.95);
+      border: 1px solid rgba(124,92,255,.10);
+    }
+    .widgetLeft{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .pill{
+      font-size:12px;
+      font-weight:900;
+      padding:6px 10px;
+      border-radius: 999px;
+      background: rgba(255,123,189,.12);
+      border: 1px solid rgba(255,123,189,.18);
+    }
   </style>
 </head>
 
@@ -145,7 +196,17 @@
         <div class="muted">오늘</div>
       </div>
       <div class="bar"><div id="barFill"></div></div>
-
+    <!-- Widget-like Summary Card -->
+    <div class="widgetCard" id="widgetCard">
+      <div class="row" style="align-items:flex-start;">
+        <div>
+          <div class="widgetTitle">🌿 오늘의 루틴</div>
+          <div class="muted" id="widgetSub">남은 할 일 0개</div>
+        </div>
+        <button class="widgetBtn" id="toggleDetailsBtn">자세히</button>
+      </div>
+      <div class="widgetList" id="widgetList"></div>
+    </div>
       <ul id="list"></ul>
 
       <div class="add">
