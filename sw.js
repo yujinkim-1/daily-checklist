@@ -1,12 +1,19 @@
-const CACHE = "daily-checklist-cache-v2";
-const ASSETS = ["./", "./index.html", "./app.js", "./manifest.json"];
+const CACHE = "daily-checklist-cache-v3";
+const ASSETS = ["./", "./index.html", "./app.js", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));
 });
 
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+// ⭐ 추가: 이전 캐시 삭제 (중요)
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
+    )
   );
+});
+
+self.addEventListener("fetch", (event) => {
+  event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request)));
 });
