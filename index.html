@@ -161,6 +161,17 @@
       background: rgba(255,123,189,.12);
       border: 1px solid rgba(255,123,189,.18);
     }
+    /* iOS에서 input 텍스트가 안 보이는 문제 강제 해결 */
+    input, textarea {
+      color: var(--text) !important;
+      -webkit-text-fill-color: var(--text) !important; /* ✅ iOS 핵심 */
+      caret-color: var(--primary) !important;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(31,31,42,.45) !important;
+      -webkit-text-fill-color: rgba(31,31,42,.45) !important;
+    }
   </style>
 </head>
 
